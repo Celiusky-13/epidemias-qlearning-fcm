@@ -1,0 +1,4 @@
+pais,controla,reduccion_pct,c_medio,h_medio,coste_medio,pct_dias_bajo,retorno,c_sin_medidas,c_maxima,coste_maxima
+GB,1,66.4,0.3321,0.4177,4.723,61.1,303.09,0.9883,0.1075,10.000
+ES,1,69.8,0.2974,0.3604,5.159,55.7,273.19,0.9839,0.0656,10.000
+BR,1,64.4,0.3501,0.4191,4.899,58.2,292.26,0.9842,0.0823,10.000

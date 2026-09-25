@@ -1,0 +1,4 @@
+alpha0,n_corridas,retorno_final,td_final,episodio_retorno_80pct
+0.1,10,234.06,0.6131,12975
+0.5,10,281.75,0.4170,3916
+0.9,10,281.67,0.3957,2543

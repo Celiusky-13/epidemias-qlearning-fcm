@@ -1,0 +1,6 @@
+metrica,indicador,valor,veredicto
+M1_coherencia,reglas_rejilla_superadas,6/6,BUENA
+M1_coherencia,pct_estado_accion_coherente,93.5,BUENA
+M2_eficacia,reduccion_contagio_pct_vs_no_actuar,65.0,BUENA
+M2_eficacia,pct_del_coste_maximo,49.9,BUENA
+M2_eficacia,retorno_pi,301.88,BUENA

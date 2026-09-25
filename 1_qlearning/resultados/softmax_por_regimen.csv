@@ -1,0 +1,5 @@
+fase,n_estados,n_ocupados,masa_low_unw,masa_high_unw,masa_low_pond,masa_high_pond,base_low,base_high,H_media,gap_medio,coherente
+emergencia,1215,165,0.2309,0.3463,0.1947,0.4469,0.2593,0.2593,3.5031,0.90869,1
+prop_rapida,162,48,0.2090,0.4036,0.0770,0.6290,0.2593,0.2593,3.8918,0.21002,1
+prop_lenta,162,62,0.3243,0.2883,0.2011,0.3386,0.2593,0.2593,4.0999,0.34656,1
+calma,648,217,0.2696,0.3269,0.3404,0.2436,0.2593,0.2593,4.1633,0.41456,1
