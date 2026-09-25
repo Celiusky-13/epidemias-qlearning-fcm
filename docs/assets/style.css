@@ -77,6 +77,16 @@ a:hover{text-decoration:underline}
 .fig img{width:100%;height:auto;display:block;border-radius:6px}
 .fig figcaption{font-size:.85rem;color:var(--tinta-sec);margin-top:10px}
 
+/* ===== Heatmap de la matriz FCM ===== */
+.heatmap-box{overflow-x:auto;margin:6px 0}
+#heatmap table{border-collapse:collapse;font-size:.72rem;margin:0 auto}
+#heatmap th,#heatmap td{border:1px solid #fff;text-align:center}
+#heatmap th{color:var(--tinta-sec);font-weight:700;padding:4px 7px;background:#eef2f8}
+#heatmap td{min-width:44px;height:30px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--tinta)}
+#heatmap th.corner{background:#e2e8f2}
+.leg{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:middle;margin:0 3px}
+.leg-pos{background:#003DA5}.leg-neg{background:#c0392b}
+
 /* ===== Tres fuentes ===== */
 .fuentes3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0}
 .fuente{background:var(--sup);border:1px solid var(--linea);border-radius:var(--radio);padding:16px}

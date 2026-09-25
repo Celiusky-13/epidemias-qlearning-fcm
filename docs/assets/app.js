@@ -134,6 +134,66 @@ async function initFuentes(){
   sel.addEventListener("change", ()=> pinta(sel.value));
 }
 
+/* ===================================================================
+   3) MAPAS CONSTRUIDOS (Fase 2): heatmap de la matriz de pesos 11x11
+   =================================================================== */
+const MAT_FUENTES = [
+  ["expertos","Expertos"],
+  ["llm","Modelos de lenguaje"],
+  ["datos","Datos"],
+];
+const MAT_NOTAS = {
+  expertos:"La matriz de expertos es la más densa y coherente con el dominio: el confinamiento (A4) reduce con fuerza el contagio (E1 = −0,72).",
+  llm:"Los modelos de lenguaje penalizan casi todas las medidas sobre el contagio (A1–A4 → E1 en rojo); es la matriz que más empuja a restringir.",
+  datos:"La matriz de datos es la más dispersa: recoge colegios y transporte sobre el contagio, pero no el confinamiento (A4 → E1 = 0).",
+};
+
+async function leerMatriz(ruta){
+  const txt = await (await fetch(ruta)).text();
+  const lineas = txt.trim().split(/\r?\n/);
+  const cols = lineas[0].split(",").slice(1).map(s=>s.trim());
+  const rows = [], M = [];
+  for(let i=1;i<lineas.length;i++){
+    const p = lineas[i].split(",");
+    rows.push(p[0].trim());
+    M.push(p.slice(1).map(Number));
+  }
+  return {cols, rows, M};
+}
+const colorCelda = v =>
+  v>0 ? `rgba(0,61,165,${Math.min(1,v)})`
+      : v<0 ? `rgba(192,57,43,${Math.min(1,-v)})`
+            : "#f0f3f8";
+
+async function initMatriz(){
+  const sel = document.getElementById("sel-matriz");
+  MAT_FUENTES.forEach(([k,txt]) => sel.add(new Option(txt, k)));
+  sel.value = "expertos";
+
+  const pinta = async (fuente) => {
+    const {cols, rows, M} = await leerMatriz(`data/matriz_${fuente}.csv`);
+    let html = "<table><tr><th class='corner'>desde&nbsp;\\&nbsp;hacia</th>";
+    cols.forEach(c => html += `<th>${c}</th>`);
+    html += "</tr>";
+    rows.forEach((r,i) => {
+      html += `<tr><th>${r}</th>`;
+      M[i].forEach((v,j) => {
+        const bg = colorCelda(v);
+        const txt = Math.abs(v) >= 0.005 ? v.toFixed(2) : "";
+        const col = Math.abs(v) >= 0.45 ? "#fff" : "var(--tinta)";
+        html += `<td style="background:${bg};color:${col}" title="${r} → ${cols[j]}: ${v.toFixed(2)}">${txt}</td>`;
+      });
+      html += "</tr>";
+    });
+    html += "</table>";
+    document.getElementById("heatmap").innerHTML = html;
+    document.getElementById("note-matriz").textContent = MAT_NOTAS[fuente] || "";
+  };
+  await pinta(sel.value);
+  sel.addEventListener("change", ()=> pinta(sel.value));
+}
+
 /* ---------- arranque ---------- */
 initBaselines().catch(e => console.error("baselines:", e));
 initFuentes().catch(e => console.error("fuentes:", e));
+initMatriz().catch(e => console.error("matriz:", e));

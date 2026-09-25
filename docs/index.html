@@ -105,6 +105,23 @@
       <div class="fuente"><span class="dot terracota"></span><strong>Datos reales</strong><br>Descubrimiento causal (PC, FCI, GES) sobre las series por país.</div>
       <div class="fuente"><span class="dot teal"></span><strong>Panel de expertos</strong><br>Epidemiólogos y salud pública; es la referencia.</div>
     </div>
+    <div class="card">
+      <div class="card-head">
+        <h3>Los mapas construidos (matriz de pesos 11×11)</h3>
+        <label class="selector">Fuente
+          <select id="sel-matriz"></select>
+        </label>
+      </div>
+      <p class="note" style="margin-top:0">
+        Cada celda es el peso causal de la fila (origen) sobre la columna (destino): en
+        <span class="leg leg-pos"></span> azul si lo aumenta, en <span class="leg leg-neg"></span>
+        rojo si lo reduce; más intenso, más fuerte. E1–E7 son variables de estado y A1–A4 las
+        acciones. Pasa el ratón por una celda para ver el valor.
+      </p>
+      <div class="heatmap-box"><div id="heatmap"></div></div>
+      <p class="note" id="note-matriz"></p>
+    </div>
+
     <p class="note">
       El hallazgo del capítulo: expertos y modelos de lenguaje recogen con claridad que las
       medidas frenan el contagio; la matriz de datos, a un día de horizonte, no captura el
