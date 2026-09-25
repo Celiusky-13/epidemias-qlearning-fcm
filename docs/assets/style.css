@@ -86,6 +86,10 @@ a:hover{text-decoration:underline}
 #heatmap th.corner{background:#e2e8f2}
 .leg{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:middle;margin:0 3px}
 .leg-pos{background:#003DA5}.leg-neg{background:#c0392b}
+.graph-wrap{margin-top:18px;border-top:1px solid var(--linea);padding-top:14px}
+.graph-title{color:var(--azul-osc);font-size:1.02rem;margin-bottom:6px}
+.graph-box{max-width:620px;margin:0 auto}
+.graph-box svg{width:100%;height:auto;display:block}
 
 /* ===== Tres fuentes ===== */
 .fuentes3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0}

@@ -165,6 +165,35 @@ const colorCelda = v =>
       : v<0 ? `rgba(192,57,43,${Math.min(1,-v)})`
             : "#f0f3f8";
 
+/* dibuja el FCM como grafo (nodos en círculo, aristas dirigidas y ponderadas) */
+function drawGrafo(cols, M){
+  const n=cols.length, cx=300, cy=235, R=178, nr=23, TH=0.35;
+  const pos = cols.map((_,k)=>{ const a=-Math.PI/2 + k*2*Math.PI/n;
+    return {x:cx+R*Math.cos(a), y:cy+R*Math.sin(a)}; });
+  let edges="";
+  for(let i=0;i<n;i++) for(let j=0;j<n;j++){
+    if(i===j) continue; const w=M[i][j]; if(Math.abs(w)<TH) continue;
+    const p1=pos[i], p2=pos[j], dx=p2.x-p1.x, dy=p2.y-p1.y, L=Math.hypot(dx,dy)||1;
+    const ux=dx/L, uy=dy/L;
+    const x1=(p1.x+ux*nr).toFixed(1), y1=(p1.y+uy*nr).toFixed(1);
+    const x2=(p2.x-ux*(nr+7)).toFixed(1), y2=(p2.y-uy*(nr+7)).toFixed(1);
+    const positivo=w>0, col=positivo?"#003DA5":"#c0392b";
+    const wd=(1.2+4*Math.abs(w)).toFixed(1), mk=positivo?"url(#arr-pos)":"url(#arr-neg)";
+    edges+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="${wd}" stroke-opacity="0.62" marker-end="${mk}"><title>${cols[i]} → ${cols[j]}: ${w.toFixed(2)}</title></line>`;
+  }
+  let nodes="";
+  cols.forEach((c,k)=>{
+    const p=pos[k], accion=c[0]==="A";
+    const fill=accion?"#ffffff":"#003DA5", tcol=accion?"#003DA5":"#ffffff";
+    nodes+=`<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${nr}" fill="${fill}" stroke="#003DA5" stroke-width="2"/>`+
+           `<text x="${p.x.toFixed(1)}" y="${(p.y+4).toFixed(1)}" text-anchor="middle" font-size="13" font-weight="700" fill="${tcol}">${c}</text>`;
+  });
+  const defs=`<defs>`+
+    `<marker id="arr-pos" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#003DA5"/></marker>`+
+    `<marker id="arr-neg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker></defs>`;
+  return `<svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grafo del mapa cognitivo difuso">${defs}${edges}${nodes}</svg>`;
+}
+
 async function initMatriz(){
   const sel = document.getElementById("sel-matriz");
   MAT_FUENTES.forEach(([k,txt]) => sel.add(new Option(txt, k)));
@@ -187,6 +216,7 @@ async function initMatriz(){
     });
     html += "</table>";
     document.getElementById("heatmap").innerHTML = html;
+    document.getElementById("fcm-graph").innerHTML = drawGrafo(cols, M);
     document.getElementById("note-matriz").textContent = MAT_NOTAS[fuente] || "";
   };
   await pinta(sel.value);
