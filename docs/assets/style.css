@@ -109,6 +109,64 @@ a:hover{text-decoration:underline}
 .footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 .footer a{color:#fff;font-weight:600}
 
+/* ===== Botones (idioma, play, copiar) ===== */
+.btn-lang{font:inherit;font-weight:700;font-size:.82rem;color:#fff;background:transparent;
+  border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:4px 11px;cursor:pointer}
+.btn-lang:hover{background:rgba(255,255,255,.14)}
+.btn-play{font:inherit;font-weight:700;color:#fff;background:var(--azul);border:none;
+  border-radius:8px;padding:7px 16px;cursor:pointer}
+.btn-play:hover{background:var(--azul-osc)}
+.btn-play[disabled]{opacity:.55;cursor:default}
+
+/* ===== Gráficas pequeñas ===== */
+.chart-box.sm{height:280px}
+
+/* ===== Mini-simulador ===== */
+.sim-grid{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:22px;align-items:start}
+.sim-controls{display:flex;flex-direction:column;gap:14px}
+.sim-lever label{font-weight:600;font-size:.9rem;color:var(--azul-osc);display:flex;justify-content:space-between}
+.sim-lever input[type=range]{width:100%;accent-color:var(--azul)}
+.sim-lever .lvl{color:var(--tinta-sec);font-weight:700}
+.sim-cost{margin-top:10px;text-align:center;font-size:.95rem;color:var(--tinta-sec)}
+.sim-cost strong{display:inline-block;font-size:1.8rem;color:var(--azul);margin-left:8px}
+.sim-cost-max{color:var(--tinta-sec);font-size:1rem}
+
+/* ===== Episodio animado ===== */
+.epi-levers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.epi-lever{background:var(--sup);border:1px solid var(--linea);border-radius:10px;padding:8px;text-align:center}
+.epi-lever .nm{font-size:.78rem;color:var(--tinta-sec);display:block}
+.epi-lever .bar{height:8px;background:#dfe6f2;border-radius:4px;margin-top:6px;overflow:hidden}
+.epi-lever .bar>i{display:block;height:100%;background:var(--azul);width:0;transition:width .25s}
+
+/* ===== Explorador de política ===== */
+.exp-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.exp-btns button{font:inherit;font-weight:600;color:var(--azul);background:#fff;
+  border:1.5px solid var(--azul-cl);border-radius:999px;padding:7px 16px;cursor:pointer}
+.exp-btns button.on,.exp-btns button:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
+.exp-out{background:var(--sup);border:1px solid var(--linea);border-radius:var(--radio);padding:16px;min-height:60px}
+.exp-out .accion{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.exp-out .pal{background:#fff;border:1px solid var(--linea);border-radius:8px;padding:8px 12px;font-size:.9rem}
+.exp-out .pal b{color:var(--azul-osc)}
+
+/* ===== Tres matrices lado a lado ===== */
+.triple{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:10px}
+.triple .mini h5{text-align:center;color:var(--azul-osc);margin-bottom:6px;font-size:.95rem}
+.triple table{border-collapse:collapse;margin:0 auto}
+.triple td{width:13px;height:13px;border:1px solid #fff;padding:0}
+
+/* ===== Bloques de código ===== */
+.code-block{position:relative;background:#0f1b33;border-radius:var(--radio);margin:14px 0;box-shadow:var(--sombra)}
+.code-block pre{margin:0;padding:16px 18px;overflow-x:auto}
+.code-block code{color:#dfe8ff;font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;font-size:.85rem;line-height:1.6}
+.btn-copy{position:absolute;top:10px;right:10px;font:inherit;font-size:.78rem;font-weight:600;
+  color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  border-radius:7px;padding:4px 10px;cursor:pointer}
+.btn-copy:hover{background:rgba(255,255,255,.26)}
+
+.umbral-val{color:var(--azul);font-weight:700;min-width:2.4em;text-align:right}
+input[type=range]{accent-color:var(--azul)}
+
+@media (max-width:720px){ .sim-grid{grid-template-columns:1fr} }
 @media (max-width:640px){
   .topbar-inner{min-height:auto;padding:10px 0}
   .chart-box{height:300px}
