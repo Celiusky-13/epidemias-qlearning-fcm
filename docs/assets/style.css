@@ -1,0 +1,101 @@
+/* ===== Paleta corporativa UAH ===== */
+:root{
+  --azul:      #003DA5;   /* Pantone 293, azul UAH */
+  --azul-osc:  #002a72;
+  --azul-cl:   #235BA8;
+  --oro:       #003DA5;   /* (antes dorado) ahora azul UAH, por preferencia */
+  --oro-cl:    #235BA8;
+  --terracota: #D2691E;
+  --teal:      #0E8A6B;
+  --tinta:     #16233d;
+  --tinta-sec: #4a5568;
+  --linea:     #e3e8f0;
+  --sup:       #f5f8fc;
+  --blanco:    #ffffff;
+  --sombra:    0 1px 3px rgba(0,40,120,.08), 0 6px 24px rgba(0,40,120,.06);
+  --radio:     14px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--tinta); background:var(--blanco); line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+a{color:var(--azul);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ===== Barra superior ===== */
+.topbar{position:sticky;top:0;z-index:50;background:var(--azul);color:#fff;box-shadow:var(--sombra)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
+.brand-uah{display:block;font-weight:700;letter-spacing:.3px}
+.brand-sub{display:block;font-size:.78rem;color:#cfe0ff}
+.nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.nav a{color:#eaf1ff;font-weight:600;font-size:.95rem}
+.nav a:hover{color:#fff;text-decoration:none}
+.nav .nav-gh{border:1px solid rgba(255,255,255,.5);padding:5px 12px;border-radius:999px}
+.nav .nav-gh:hover{background:rgba(255,255,255,.14)}
+
+/* ===== Hero ===== */
+.hero{
+  background:linear-gradient(160deg,#f3f7ff 0%, #e8f0ff 55%, #dbe7ff 100%);
+  border-bottom:1px solid var(--linea);
+  padding:64px 0 56px;
+}
+.hero h1{font-size:clamp(1.9rem,4.6vw,3rem);line-height:1.15;font-weight:700;color:var(--azul-osc)}
+.hero .accent{color:var(--oro)}
+.lead{font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--tinta-sec);max-width:62ch;margin-top:18px}
+.author{margin-top:16px;font-weight:600;color:var(--azul)}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero-tags span{background:#fff;border:1px solid var(--linea);color:var(--azul);
+  font-size:.82rem;font-weight:600;padding:6px 12px;border-radius:999px}
+
+/* ===== Secciones / fases ===== */
+.phase{padding:56px 0;border-bottom:1px solid var(--linea)}
+.kicker{display:inline-block;background:var(--oro);color:#fff;font-weight:700;font-size:.72rem;
+  letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:6px}
+.phase h2{font-size:clamp(1.5rem,3.4vw,2.1rem);color:var(--azul-osc);margin:12px 0 14px;font-weight:700}
+.phase h3{font-size:1.15rem;color:var(--azul-osc);font-weight:700}
+.phase p{max-width:74ch;color:var(--tinta);margin-bottom:14px}
+.phase em{color:var(--azul);font-style:normal;font-weight:600}
+
+/* ===== Tarjeta de gráfica ===== */
+.card{background:var(--sup);border:1px solid var(--linea);border-radius:var(--radio);
+  padding:20px 22px;margin:22px 0;box-shadow:var(--sombra)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.selector{font-size:.85rem;font-weight:600;color:var(--tinta-sec);display:flex;align-items:center;gap:8px}
+.selector select{font:inherit;font-weight:600;color:var(--azul);background:#fff;
+  border:1px solid var(--azul-cl);border-radius:8px;padding:6px 10px;cursor:pointer}
+.chart-box{position:relative;height:340px}
+.note{font-size:.9rem;color:var(--tinta-sec);margin-top:12px;max-width:80ch}
+
+/* ===== Rejilla de figuras ===== */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:24px}
+.fig{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:14px;box-shadow:var(--sombra)}
+.fig img{width:100%;height:auto;display:block;border-radius:6px}
+.fig figcaption{font-size:.85rem;color:var(--tinta-sec);margin-top:10px}
+
+/* ===== Tres fuentes ===== */
+.fuentes3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:20px 0}
+.fuente{background:var(--sup);border:1px solid var(--linea);border-radius:var(--radio);padding:16px}
+.fuente strong{color:var(--azul-osc)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.dot.azul{background:var(--azul)} .dot.terracota{background:var(--terracota)} .dot.teal{background:var(--teal)}
+
+/* ===== Takeaways ===== */
+.takeaways{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:26px}
+.take{border-left:4px solid var(--oro);background:var(--sup);border-radius:0 var(--radio) var(--radio) 0;padding:16px 18px}
+.take h4{color:var(--azul-osc);font-size:1rem;margin-bottom:6px}
+.take p{font-size:.92rem;color:var(--tinta-sec);margin:0}
+
+/* ===== Footer ===== */
+.footer{background:var(--azul-osc);color:#dfe8ff;padding:32px 0}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.footer a{color:#fff;font-weight:600}
+
+@media (max-width:640px){
+  .topbar-inner{min-height:auto;padding:10px 0}
+  .chart-box{height:300px}
+}

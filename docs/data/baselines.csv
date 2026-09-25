@@ -1,0 +1,6 @@
+politica,contagio_medio,hospital_medio,coste_medio,pct_dias_contagio_bajo,retorno
+pi* (aprendida),0.3448,0.5163,4.988,55.6,301.88
+sin restricciones,0.9839,0.9800,0.000,0.1,-284.94
+restriccion maxima,0.0787,0.1373,10.000,99.3,-238.03
+aleatoria,0.3749,0.5616,4.990,33.3,-110.74
+umbral por contagio,0.3710,0.5543,5.053,7.7,-149.32

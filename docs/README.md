@@ -1,22 +1,31 @@
 # docs/ — Web interactiva (GitHub Pages)
 
-Esta carpeta está **reservada** para una web que muestre de forma interactiva los
-experimentos y resultados del trabajo, publicada con **GitHub Pages**.
+Web estática que muestra de forma interactiva los experimentos y resultados del TFG. Usa la
+paleta corporativa de la Universidad de Alcalá (azul Pantone 293) y lee los resultados
+reales del proyecto.
 
-La idea es que, al entrar en el repositorio, se pueda ver "en directo" lo que hace el
-proyecto sin tener que ejecutar el código: las curvas de aprendizaje, la política
-aprendida, la comparación de las 4 versiones del FCM, etc.
+## Contenido
 
-## Cómo se activará (cuando esté lista)
+- `index.html` — la página (una sola, con secciones por fase).
+- `assets/style.css` — estilos (paleta UAH).
+- `assets/app.js` — carga los CSV de `data/` y dibuja las gráficas interactivas.
+- `assets/vendor/chart.umd.min.js` — librería de gráficas (incluida en el repo, sin CDN).
+- `data/` — CSV de resultados que alimentan las gráficas interactivas.
+- `figuras/` — figuras ya renderizadas (curvas de aprendizaje, convergencia, etc.).
 
-1. Poner aquí un `index.html` (y sus recursos) con la web.
-2. En GitHub: *Settings → Pages → Source: Deploy from a branch*, carpeta `/docs`.
-3. La web quedará publicada en `https://<usuario>.github.io/<repositorio>/`.
+## Cómo activar GitHub Pages
 
-## Qué mostrará (borrador)
+En GitHub: *Settings → Pages → Build and deployment → Source: Deploy from a branch*, rama
+`main`, carpeta `/docs`. La web queda publicada en:
 
-- Una página por fase, alineada con los capítulos del TFG.
-- Gráficas interactivas leídas directamente de los CSV de `resultados/` de cada fase.
-- Una vista comparativa de las 4 versiones y de las 3 fuentes del FCM.
+`https://celiusky-13.github.io/epidemias-qlearning-fcm/`
 
-*Pendiente de desarrollo.*
+## Ver en local
+
+```bash
+cd docs
+python3 -m http.server 8000
+# abrir http://localhost:8000
+```
+(Hace falta un servidor porque las gráficas cargan los CSV por HTTP; abrir el HTML como
+fichero no funciona.)

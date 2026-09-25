@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control de epidemias con Q-learning y FCM · TFG</title>
+<meta name="description" content="Trabajo Fin de Grado: control de epidemias con aprendizaje por refuerzo (Q-learning) y Mapas Cognitivos Difusos (FCM). Resultados interactivos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="brand-uah">Universidad de Alcalá</span>
+      <span class="brand-sub">Trabajo Fin de Grado · Ingeniería Telemática</span>
+    </div>
+    <nav class="nav">
+      <a href="#intro">Inicio</a>
+      <a href="#fase1">Q-learning</a>
+      <a href="#fase2">FCM</a>
+      <a href="#fase3">Integración</a>
+      <a href="https://github.com/Celiusky-13/epidemias-qlearning-fcm" class="nav-gh" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section id="intro" class="hero">
+  <div class="wrap">
+    <h1>Control de epidemias con<br><span class="accent">Q-learning</span> y <span class="accent">Mapas Cognitivos Difusos</span></h1>
+    <p class="lead">
+      ¿Qué medidas aplicar en una epidemia, semana a semana, para frenar el contagio sin
+      arruinar la economía? Este trabajo aprende esa decisión con <strong>aprendizaje por
+      refuerzo</strong> sobre un simulador transparente, y estudia cómo integrar un
+      <strong>mapa causal</strong> (el FCM) en la política.
+    </p>
+    <p class="author">Celia López de María Mozo · 2025/2026</p>
+    <div class="hero-tags">
+      <span>Q-learning tabular</span><span>Mapas Cognitivos Difusos</span>
+      <span>Descubrimiento causal</span><span>Datos COVID-19</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ================= FASE 1 ================= -->
+  <section id="fase1" class="phase">
+    <p class="kicker">Fase 1</p>
+    <h2>Aprender la política con Q-learning</h2>
+    <p>
+      El problema se plantea como un proceso de decisión: el agente observa el estado de la
+      epidemia (contagio, hospital, restricciones, cumplimiento), elige qué medidas aplicar
+      y recibe una señal que premia la salud y castiga el coste. Con <strong>Q-learning</strong>
+      aprende, sobre un simulador de ecuaciones, una política de <em>prevención primero</em>:
+      actúa fuerte cuando el contagio sube y desescala cuando la calma se sostiene.
+    </p>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>La política aprendida frente a las de referencia</h3>
+        <label class="selector">Métrica
+          <select id="sel-baselines"></select>
+        </label>
+      </div>
+      <div class="chart-box"><canvas id="chart-baselines"></canvas></div>
+      <p class="note" id="note-baselines"></p>
+    </div>
+
+    <div class="grid2">
+      <figure class="fig">
+        <img src="figuras/fig_aprendizaje.png" alt="Curva de aprendizaje: retorno y residual de Bellman" loading="lazy">
+        <figcaption>El entrenamiento converge: el retorno sube y el residual de Bellman baja (media de 50 corridas).</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="figuras/fig_ocupacion.png" alt="Ocupación por nivel de contagio" loading="lazy">
+        <figcaption>Con la política aprendida, el contagio pasa la mayor parte del tiempo en nivel bajo o medio.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="figuras/fig_acciones.png" alt="Acción media por régimen" loading="lazy">
+        <figcaption>La respuesta crece con la urgencia: máxima en propagación rápida, mínima en calma.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="figuras/fig_convergencia.png" alt="Velocidad de convergencia" loading="lazy">
+        <figcaption>Cuánto tarda en fijar la acción ideal en cada situación.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= FASE 2 ================= -->
+  <section id="fase2" class="phase">
+    <p class="kicker">Fase 2</p>
+    <h2>Construir el Mapa Cognitivo Difuso</h2>
+    <p>
+      Un FCM es un grafo causal: cada arista dice cuánto y en qué sentido una variable
+      influye en otra. Lo difícil no es simularlo, sino <strong>de dónde sale su matriz de
+      pesos</strong>. Aquí se construye desde <strong>tres fuentes independientes</strong> y
+      se comparan entre sí:
+    </p>
+    <div class="fuentes3">
+      <div class="fuente"><span class="dot azul"></span><strong>Modelos de lenguaje</strong><br>Claude, Gemini y ChatGPT rellenan la matriz.</div>
+      <div class="fuente"><span class="dot terracota"></span><strong>Datos reales</strong><br>Descubrimiento causal (PC, FCI, GES) sobre las series por país.</div>
+      <div class="fuente"><span class="dot teal"></span><strong>Panel de expertos</strong><br>Epidemiólogos y salud pública; es la referencia.</div>
+    </div>
+    <p class="note">
+      El hallazgo del capítulo: expertos y modelos de lenguaje recogen con claridad que las
+      medidas frenan el contagio; la matriz de datos, a un día de horizonte, no captura el
+      efecto del confinamiento (aunque sí el de colegios y transporte).
+    </p>
+  </section>
+
+  <!-- ================= FASE 3 ================= -->
+  <section id="fase3" class="phase">
+    <p class="kicker">Fase 3</p>
+    <h2>Integrar el FCM con el Q-learning</h2>
+    <p>
+      Se comparan cuatro versiones según cómo entra el FCM: <strong>V1</strong> puro (sin
+      FCM), <strong>V2</strong> el FCM desempata al decidir, <strong>V3</strong> el FCM
+      modula la recompensa, y <strong>V4</strong> las dos cosas. Y se repite con las tres
+      fuentes del mapa, con las matrices a la misma escala.
+    </p>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Las 4 versiones según la fuente del FCM</h3>
+        <label class="selector">Métrica
+          <select id="sel-fuentes"></select>
+        </label>
+      </div>
+      <div class="chart-box"><canvas id="chart-fuentes"></canvas></div>
+      <p class="note" id="note-fuentes"></p>
+    </div>
+
+    <div class="takeaways">
+      <div class="take"><h4>El FCM no mejora el retorno…</h4><p>porque el retorno es justo lo que el Q-learning ya optimiza. V3 (FCM en la recompensa) apenas cambia nada.</p></div>
+      <div class="take"><h4>…pero cambia la prioridad</h4><p>cuando entra en la decisión (V2/V4), la política se vuelve más protectora: menos contagio a cambio de más restricciones.</p></div>
+      <div class="take"><h4>La fuente importa</h4><p>los modelos de lenguaje sobreactúan (retorno negativo); los expertos equilibran; y los datos, a igual escala, resultan sorprendentemente eficientes.</p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>Control de epidemias con Q-learning y FCM</strong><br>
+      Trabajo Fin de Grado · Celia López de María Mozo · Universidad de Alcalá · 2025/2026
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/Celiusky-13/epidemias-qlearning-fcm" target="_blank" rel="noopener">Código en GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/chart.umd.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
