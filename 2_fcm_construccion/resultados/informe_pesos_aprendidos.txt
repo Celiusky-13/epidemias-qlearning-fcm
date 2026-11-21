@@ -1,0 +1,19 @@
+INFORME DE PESOS APRENDIDOS (regresión lag-1 estandarizada)
+============================================================
+Modelo: z_j(t+1) ~ Σ_i β_{ij} z_i(t), donde los i son los
+padres de j según el consenso automático. z = estandarizado.
+Agregación entre países: media ponderada por R².
+
+===== INFERIR =====
+  ES: R² medio = 0.601, R² por concepto = {'E1': np.float64(0.118), 'E3': np.float64(0.353), 'E5': np.float64(0.957), 'E7': np.float64(0.977)}
+  GB: R² medio = 0.645, R² por concepto = {'E1': np.float64(0.129), 'E3': np.float64(0.496), 'E5': np.float64(0.978), 'E7': np.float64(0.976)}
+  BR: R² medio = 0.681, R² por concepto = {'E1': np.float64(0.248), 'E3': np.float64(0.52), 'E5': np.float64(0.976), 'E7': np.float64(0.98)}
+  AGREGADO (media ponderada por R²):
+    celdas no nulas: 21
+
+===== PREDECIR =====
+  ES: R² medio = 0.110, R² por concepto = {'E1': np.float64(0.11)}
+  GB: R² medio = 0.102, R² por concepto = {'E1': np.float64(0.102)}
+  BR: R² medio = 0.227, R² por concepto = {'E1': np.float64(0.227)}
+  AGREGADO (media ponderada por R²):
+    celdas no nulas: 4

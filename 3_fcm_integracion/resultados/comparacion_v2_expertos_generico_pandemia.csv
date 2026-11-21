@@ -1,0 +1,5 @@
+version,nombre,contagio,hospital,coste,pct_bajo,retorno
+V1,Q-learning puro,0.5447,0.9886,4.752,66.4,287.37
+V2,+ FCM decisión (exp/expl),0.5079,0.9906,5.364,92.1,168.96
+V3,+ FCM predecir en reward,0.5565,0.9904,5.027,54.7,302.93
+V4,Híbrido V2+V3,0.5555,0.9905,5.082,54.4,301.90
