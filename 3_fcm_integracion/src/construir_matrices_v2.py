@@ -164,8 +164,9 @@ def matriz_datos_inferir(metodo_pesos="corr"):
        metodo_pesos: 'corr' (vieja, correlación) o 'aprendidos' (nuevo, regresión
        lag-1 estandarizada controlando persistencia - cargado desde CSV)."""
     aristas = estructura_consenso_csv("inferir")
-    if metodo_pesos == "aprendidos":
-        ruta = os.path.join(DATOS, "pesos_aprendidos_datos_inferir.csv")
+    if metodo_pesos in ("aprendidos", "nhl", "dhl"):
+        sufijo = "" if metodo_pesos == "aprendidos" else "_" + metodo_pesos
+        ruta = os.path.join(DATOS, f"pesos_aprendidos_datos_inferir{sufijo}.csv")
         if not os.path.exists(ruta):
             print(f"  AVISO: no existe {ruta}. Cae a 'corr'. Lanza "
                   f"aprender_pesos_datos.py primero.")
@@ -192,8 +193,9 @@ def matriz_datos_inferir(metodo_pesos="corr"):
 def matriz_datos_predecir(metodo_pesos="corr"):
     """Construye la matriz 'predecir contagio' de la fuente datos."""
     aristas = estructura_consenso_csv("predecir")
-    if metodo_pesos == "aprendidos":
-        ruta = os.path.join(DATOS, "pesos_aprendidos_datos_predecir.csv")
+    if metodo_pesos in ("aprendidos", "nhl", "dhl"):
+        sufijo = "" if metodo_pesos == "aprendidos" else "_" + metodo_pesos
+        ruta = os.path.join(DATOS, f"pesos_aprendidos_datos_predecir{sufijo}.csv")
         if not os.path.exists(ruta):
             print(f"  AVISO: no existe {ruta}. Cae a 'corr'. Lanza "
                   f"aprender_pesos_datos.py primero.")
@@ -235,7 +237,7 @@ def no_nulos(W, tol=1e-6):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pesos", choices=["corr", "aprendidos"], default="corr",
+    ap.add_argument("--pesos", choices=["corr", "aprendidos", "nhl", "dhl"], default="corr",
                     help="Método para pesos de la fuente datos (default: corr). "
                          "'aprendidos' requiere lanzar antes aprender_pesos_datos.py.")
     args = ap.parse_args()

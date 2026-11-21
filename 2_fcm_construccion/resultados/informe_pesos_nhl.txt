@@ -1,0 +1,14 @@
+ALGORITMO: NHL
+
+
+===== INFERIR (21 aristas) =====
+  ES: MSE medio=0.1686  corr medio=0.426  celdas no nulas=21
+  GB: MSE medio=0.1518  corr medio=0.515  celdas no nulas=21
+  BR: MSE medio=0.1542  corr medio=0.340  celdas no nulas=21
+  AGREGADO: celdas no nulas = 21
+
+===== PREDECIR (4 aristas) =====
+  ES: MSE medio=0.0265  corr medio=0.121  celdas no nulas=4
+  GB: MSE medio=0.0436  corr medio=-0.012  celdas no nulas=4
+  BR: MSE medio=0.0386  corr medio=-0.110  celdas no nulas=4
+  AGREGADO: celdas no nulas = 4

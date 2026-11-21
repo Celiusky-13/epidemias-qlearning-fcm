@@ -1,0 +1,14 @@
+ALGORITMO: DHL
+
+
+===== INFERIR (21 aristas) =====
+  ES: MSE medio=0.3100  corr medio=-0.463  celdas no nulas=21
+  GB: MSE medio=0.3766  corr medio=-0.586  celdas no nulas=21
+  BR: MSE medio=0.2710  corr medio=-0.406  celdas no nulas=21
+  AGREGADO: celdas no nulas = 21
+
+===== PREDECIR (4 aristas) =====
+  ES: MSE medio=0.0341  corr medio=-0.217  celdas no nulas=4
+  GB: MSE medio=0.0835  corr medio=-0.179  celdas no nulas=4
+  BR: MSE medio=0.0649  corr medio=-0.390  celdas no nulas=4
+  AGREGADO: celdas no nulas = 4
