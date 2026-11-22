@@ -157,6 +157,51 @@
       <div class="triple" id="triple-heatmaps"></div>
     </div>
 
+    
+
+    <div class="card" style="margin-top:28px;border:2px solid var(--azul);background:#f3f8ff">
+      <div class="card-head">
+        <h3 style="margin:0;color:var(--azul-osc)">🆕 Grafos finales por fuente (rev. nov 2026)</h3>
+        <div class="selector" style="gap:12px">
+          <label>Fuente
+            <select id="sel-fuente">
+              <option value="expertos">Expertos</option>
+              <option value="llm">LLM</option>
+              <option value="datos">Datos</option>
+            </select>
+          </label>
+          <label>Tipo
+            <select id="sel-tipo">
+              <option value="inferir">Inferir (próximos estados)</option>
+              <option value="predecir">Predecir contagio</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <figure style="text-align:center;margin:12px 0">
+        <img id="grafo-img" src="figuras/grafo_expertos_inferir.png"
+             alt="Grafo del FCM" style="max-width:100%;border-radius:8px">
+        <figcaption style="font-size:.85rem;color:var(--tinta-sec);margin-top:8px">
+          Nodos azules: estados. Naranjas: acciones. Aristas azules: influencia positiva,
+          rojas: negativa. Grosor proporcional al peso.
+        </figcaption>
+      </figure>
+      <p class="note">Mapa reconstruido tras la reunión del 23/10: <strong>dos matrices
+      por fuente</strong> (una para inferir el estado siguiente, otra para predecir el
+      contagio), y <strong>pesos aprendidos por regresión lag-1 estandarizada</strong>
+      (no por correlación). Script:
+      <code>construir_matrices_v2.py --pesos aprendidos</code>.</p>
+    </div>
+    <script>
+      (function(){
+        const img = document.getElementById("grafo-img");
+        const f = document.getElementById("sel-fuente");
+        const t = document.getElementById("sel-tipo");
+        function act(){ img.src = `figuras/grafo_${f.value}_${t.value}.png`; }
+        f.addEventListener("change", act); t.addEventListener("change", act);
+      })();
+    </script>
+
     <p class="note" data-i18n="f2_hallazgo">El hallazgo del capítulo: expertos y modelos de lenguaje recogen con claridad que las medidas frenan el contagio; la matriz de datos, a un día de horizonte, no captura el efecto del confinamiento (aunque sí el de colegios y transporte).</p>
   </section>
 
@@ -190,6 +235,62 @@
   </section>
 
   <!-- ================= DEMO EN TIEMPO REAL ================= -->
+
+
+  <!-- ================= COMPARACIÓN CON EL ESTADO DEL ARTE ================= -->
+  <section id="sota" class="phase" style="background:#fafbfc">
+    <p class="kicker">Estado del arte</p>
+    <h2>Comparación con Kompella et al. 2020</h2>
+    <p>Se implementaron las dos heurísticas principales de
+    <a href="https://arxiv.org/abs/2010.10560" target="_blank">Kompella et al. 2020</a>
+    (SAC + 5 etapas de regulación para COVID) en nuestro simulador para contrastar
+    frente al Q-learning aprendido del TFG. Resultados con 3 semillas, escenario genérico:</p>
+
+    <div class="card">
+      <table style="width:100%;border-collapse:collapse;font-size:.92rem">
+        <thead>
+          <tr style="background:var(--sup);text-align:left">
+            <th style="padding:8px">Política</th>
+            <th style="padding:8px;text-align:right">Contagio medio</th>
+            <th style="padding:8px;text-align:right">% días bajo</th>
+            <th style="padding:8px;text-align:right">Coste medio</th>
+            <th style="padding:8px;text-align:right">Retorno</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:8px">Sin restricciones</td>
+              <td style="padding:8px;text-align:right">0.985</td>
+              <td style="padding:8px;text-align:right">0.1%</td>
+              <td style="padding:8px;text-align:right">0.00</td>
+              <td style="padding:8px;text-align:right;color:#c0392b"><b>-285</b></td></tr>
+          <tr><td style="padding:8px">S0-4-0 (Kompella)</td>
+              <td style="padding:8px;text-align:right">0.187</td>
+              <td style="padding:8px;text-align:right">91.7%</td>
+              <td style="padding:8px;text-align:right">7.39</td>
+              <td style="padding:8px;text-align:right;color:#c0392b"><b>-129</b></td></tr>
+          <tr><td style="padding:8px">S0-4-0-GI (Kompella, variante)</td>
+              <td style="padding:8px;text-align:right">0.196</td>
+              <td style="padding:8px;text-align:right">84.9%</td>
+              <td style="padding:8px;text-align:right">6.90</td>
+              <td style="padding:8px;text-align:right;color:#c0392b"><b>-122</b></td></tr>
+          <tr style="background:#eaf2ff">
+            <td style="padding:8px"><b>V1 Q-learning (este TFG)</b></td>
+            <td style="padding:8px;text-align:right">0.341</td>
+            <td style="padding:8px;text-align:right">64.2%</td>
+            <td style="padding:8px;text-align:right">4.97</td>
+            <td style="padding:8px;text-align:right;color:#0E8A6B"><b>+197</b></td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:14px">
+      Las heurísticas de Kompella protegen mejor la salud (<strong>&gt;85% días en
+      bajo</strong>) pero con un coste tan elevado que su retorno es negativo. El
+      Q-learning aprendido es el <strong>único con retorno positivo</strong>: encuentra
+      mejor equilibrio salud-coste. Y cuando se le añade el FCM en la decisión (V2),
+      se desplaza hacia la zona de Kompella pero sin perder tanto retorno.
+      </p>
+    </div>
+  </section>
+
   <section id="demo" class="phase">
     <p class="kicker" data-i18n="demo_kicker">En directo</p>
     <h2 data-i18n="demo_h2">Pruébalo tú en tiempo real</h2>
