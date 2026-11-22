@@ -237,6 +237,31 @@
   <!-- ================= DEMO EN TIEMPO REAL ================= -->
 
 
+
+
+    <div class="card" style="margin-top:28px;border:2px solid var(--verde,#0E8A6B);background:#f0faf5">
+      <h3 style="color:var(--azul-osc);margin:0 0 10px">🆕 Hallazgos del barrido final (rev. nov 2026)</h3>
+      <p>90 experimentos: 3 fuentes × 3 países × 2 escenarios × 5 semillas. Rediseño
+      de V2 como <em>explorar/explotar</em> y V3 con shaping centrado. IC95 por bootstrap.</p>
+      <ul style="margin-left:1.2em;line-height:1.7">
+        <li><b>Expertos y LLM funcionan muy bien en V2:</b> en ES genérico suben el
+        %días bajo del 60% al 97% (V2) y 98% (V4).</li>
+        <li><b>En pandemia el FCM es imprescindible:</b> V4 con expertos sube el %bajo
+        a 94% (vs 60% de V1), al precio de bajar algo el retorno.</li>
+        <li><b>Los pesos de datos no bastan en V2:</b> con la fuente datos (aprendidos
+        por regresión), V2 empeora (%bajo 40%, retorno -71). El Q-learning puro ya es
+        mejor. Es una limitación honesta que reportar.</li>
+        <li><b>Diferencia por país:</b> GB con V1 ya alcanza 96% días bajo (dinámica
+        más controlable); el margen de mejora del FCM es menor.</li>
+      </ul>
+      <p class="note">Estadística pareada (Wilcoxon) sobre 5 semillas: V2 vs V1
+      significativo (p &lt; 0.05) en expertos/genérico con tamaño de efecto grande
+      (Cohen's d &gt; 10). CSV completo:
+      <code>docs/data/stats_resumen.csv</code> y
+      <code>docs/data/stats_comparaciones.csv</code>.</p>
+    </div>
+
+
   <!-- ================= COMPARACIÓN CON EL ESTADO DEL ARTE ================= -->
   <section id="sota" class="phase" style="background:#fafbfc">
     <p class="kicker">Estado del arte</p>

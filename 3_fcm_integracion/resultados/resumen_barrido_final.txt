@@ -1,0 +1,91 @@
+BARRIDO FINAL: 360 filas
+
+--- ES / generico ---
+Fuente    VersiónRetorno         %bajo           Contagio        
+expertos  V1      +210.9        60.7%        0.291
+expertos  V2       +21.4        97.4%        0.208
+expertos  V3      +190.7        72.1%        0.270
+expertos  V4       +21.2        97.9%        0.197
+llm       V1      +207.6        60.9%        0.290
+llm       V2       +24.8        97.6%        0.207
+llm       V3      +152.6        82.2%        0.252
+llm       V4       +30.0        98.0%        0.182
+datos     V1      +204.1        60.9%        0.291
+datos     V2       -70.7        40.0%        0.310
+datos     V3      +204.8        67.5%        0.287
+datos     V4       -73.5        40.2%        0.312
+
+--- ES / pandemia ---
+Fuente    VersiónRetorno         %bajo           Contagio        
+expertos  V1      +299.4        60.7%        0.483
+expertos  V2      +195.0        79.5%        0.443
+expertos  V3      +281.8        62.5%        0.479
+expertos  V4      +116.5        94.6%        0.400
+llm       V1      +299.7        60.8%        0.483
+llm       V2       +77.7        96.3%        0.411
+llm       V3      +266.9        65.7%        0.475
+llm       V4       +65.1        92.9%        0.401
+datos     V1      +299.8        60.9%        0.483
+datos     V2       -83.2        46.0%        0.500
+datos     V3      +301.6        63.9%        0.478
+datos     V4       -83.5        45.2%        0.501
+
+--- GB / generico ---
+Fuente    VersiónRetorno         %bajo           Contagio        
+expertos  V1      +309.1        95.9%        0.265
+expertos  V2       +35.8        83.9%        0.296
+expertos  V3      +247.3        97.1%        0.249
+expertos  V4       +14.0        93.1%        0.266
+llm       V1      +309.8        95.9%        0.266
+llm       V2      +139.3        98.6%        0.213
+llm       V3      +204.2        97.9%        0.214
+llm       V4      +126.7        98.4%        0.179
+datos     V1      +310.5        96.0%        0.263
+datos     V2       -75.8        42.5%        0.346
+datos     V3      +316.2        97.1%        0.265
+datos     V4       -78.3        41.8%        0.346
+
+--- GB / pandemia ---
+Fuente    VersiónRetorno         %bajo           Contagio        
+expertos  V1      +372.0        84.5%        0.431
+expertos  V2      +184.9        97.2%        0.377
+expertos  V3      +357.8        78.4%        0.451
+expertos  V4      +231.7        84.4%        0.422
+llm       V1      +372.5        84.7%        0.430
+llm       V2      +224.9        98.5%        0.356
+llm       V3      +288.1        88.5%        0.386
+llm       V4      +193.2        98.6%        0.336
+datos     V1      +371.4        84.8%        0.430
+datos     V2       -74.4        47.2%        0.509
+datos     V3      +395.0        81.2%        0.441
+datos     V4       -81.1        46.8%        0.509
+
+--- BR / generico ---
+Fuente    VersiónRetorno         %bajo           Contagio        
+expertos  V1      +226.3        85.1%        0.325
+expertos  V2       +11.5        87.3%        0.317
+expertos  V3      +187.1        83.8%        0.317
+expertos  V4        +9.8        91.9%        0.297
+llm       V1      +228.0        85.8%        0.324
+llm       V2       +67.9        97.3%        0.255
+llm       V3      +136.2        96.9%        0.242
+llm       V4       +32.7        97.0%        0.219
+datos     V1      +229.3        85.2%        0.324
+datos     V2       -75.5        42.6%        0.367
+datos     V3      +214.8        78.0%        0.333
+datos     V4       -73.6        43.4%        0.368
+
+--- BR / pandemia ---
+Fuente    VersiónRetorno         %bajo           Contagio        
+expertos  V1      +288.6        59.5%        0.545
+expertos  V2      +241.4        64.9%        0.532
+expertos  V3      +314.8        63.6%        0.542
+expertos  V4      +227.4        79.6%        0.508
+llm       V1      +288.6        59.5%        0.545
+llm       V2       +97.2        95.0%        0.474
+llm       V3      +237.3        70.7%        0.502
+llm       V4      +140.1        80.0%        0.479
+datos     V1      +287.9        59.6%        0.545
+datos     V2       -79.3        48.0%        0.561
+datos     V3      +310.1        85.5%        0.483
+datos     V4       -83.6        46.1%        0.563
